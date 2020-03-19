@@ -1,9 +1,15 @@
-import React, { FC } from 'react'
+import React, { FC } from "react";
 
 const CommentBox: FC = () => {
     return (
-        <div>CommentBox</div>
-    )
-}
+        <form>
+            <h4>Add a comment</h4>
+            <textarea></textarea>
+            <div>
+                <button>Submit Comment</button>
+            </div>
+        </form>
+    );
+};
 
 export default CommentBox;
