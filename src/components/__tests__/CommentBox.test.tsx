@@ -46,6 +46,8 @@ describe("comment box", () => {
         
         wrapped.update();
 
+        expect(wrapped.find("textarea").prop("value")).toEqual(newComment);
+        
         wrapped.find("form").simulate("submit");
 
         wrapped.update();
