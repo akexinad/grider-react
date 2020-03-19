@@ -1,12 +1,17 @@
 import React from "react";
 import { ReactWrapper, mount } from "enzyme";
 
+import Root from "../../Root";
 import CommentBox from "../CommentBox";
 
 let wrapped: ReactWrapper;
 
 beforeEach(() => {
-    wrapped = mount(<CommentBox />);
+    wrapped = mount(
+        <Root>
+            <CommentBox />
+        </Root>
+    );
 });
 
 afterEach(() => {
@@ -21,7 +26,6 @@ describe("the text area", () => {
     const newComment = "this is a new comment";
 
     beforeEach(() => {
-
         wrapped.find("textarea").simulate("change", {
             target: { value: newComment }
         });
