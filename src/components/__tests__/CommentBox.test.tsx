@@ -29,6 +29,7 @@ describe("comment box", () => {
             target: { value: "this is a new comment" }
         });
 
+        wrapped.update();
 
     });
 });
