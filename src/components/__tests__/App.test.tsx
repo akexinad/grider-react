@@ -3,6 +3,7 @@ import { shallow } from "enzyme";
 
 import App from "../App";
 import CommentBox from "../CommentBox";
+import CommentList from "../CommentList";
 
 /**
  *
@@ -23,6 +24,7 @@ import CommentBox from "../CommentBox";
 
 describe("app component", () => {
     const component = <App />;
+    const wrapper = shallow(component);
 
     /**
      * we are actually creating a div inside of the browser,
@@ -41,9 +43,12 @@ describe("app component", () => {
     });
 
     it("shows a comment box", () => {
-        const wrapper = shallow(component);
 
         expect(wrapper.find(CommentBox).length).toBe(1);
         // expect(wrapper.find(CommentBox).length).toBe(2);
     });
+
+    it("shows a comment list", () => {
+        expect(wrapper.find(CommentList).length).toBe(1);
+    })
 });
