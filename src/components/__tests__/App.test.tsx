@@ -4,9 +4,8 @@ import ReactDOM from "react-dom";
 import App from "../App";
 
 describe("app component", () => {
-
     const component = <App />;
-    
+
     /**
      * we are actually creating a div inside of the browser,
      * the JSDOM library mocks up a browser like environment that
@@ -25,7 +24,9 @@ describe("app component", () => {
 
     it("shows a comment box", () => {
         ReactDOM.render(component, div);
-    });
 
-    
+        console.log("div.innerHTML", div.innerHTML);
+
+        expect(div.innerHTML).toContain("CommentBox");
+    });
 });
