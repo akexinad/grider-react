@@ -1,10 +1,21 @@
-import React, { FC } from "react";
+import React, { FC, useState, ChangeEvent, FormEvent } from "react";
 
 const CommentBox: FC = () => {
+    const [comment, setComment] = useState("");
+
+    const _handleChange = (e: ChangeEvent<HTMLTextAreaElement>) =>
+        setComment(e.target.value);
+
+    const _handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+
+        setComment("");
+    }
+
     return (
-        <form>
+        <form onSubmit={_handleSubmit}>
             <h4>Add a comment</h4>
-            <textarea></textarea>
+            <textarea value={comment} onChange={_handleChange}></textarea>
             <div>
                 <button>Submit Comment</button>
             </div>
