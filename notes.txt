@@ -1,0 +1,10 @@
+Source code can be found at:
+
+https://github.com/StephenGrider/AdvancedReduxCode/tree/master
+
+
+What tests should you write?
+
+- Look at each individual part of your application and pretend that you are explaining each part of
+    that component to a stranger.
+- What you say to that stranger is exactly what you should be testing.
