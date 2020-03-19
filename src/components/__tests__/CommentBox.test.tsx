@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow, ReactWrapper, ShallowWrapper, mount } from "enzyme";
+import { ReactWrapper, mount } from "enzyme";
 
 import CommentBox from "../CommentBox";
 
@@ -35,4 +35,21 @@ describe("comment box", () => {
 
         expect(wrapped.find("textarea").prop("value")).toEqual(newComment);
     });
+
+    it("empties the text area when the form has been submitted", () => {
+
+        const newComment = "this is a new comment"
+        
+        wrapped.find("textarea").simulate("change", {
+            target: { value: newComment }
+        });
+        
+        wrapped.update();
+
+        wrapped.find("form").simulate("submit");
+
+        wrapped.update();
+
+        expect(wrapped.find("textarea").prop("value")).toEqual("");
+    })
 });

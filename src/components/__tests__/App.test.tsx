@@ -23,7 +23,6 @@ import CommentList from "../CommentList";
  */
 
 describe("app component", () => {
-    
     /**
      * we are actually creating a div inside of the browser,
      * the JSDOM library mocks up a browser like environment that
@@ -32,30 +31,27 @@ describe("app component", () => {
      * So this div is a mocked div that existts in the terminal,
      * not the browser.
      */
-    
+
     // const div = document.createElement("div");
-    
-    
+
     let wrapped: ShallowWrapper;
-    
+
     beforeEach(() => {
         const component = <App />;
-        wrapped = shallow(component);    
-    })
+        wrapped = shallow(component);
+    });
 
     afterEach(() => {
         // this cleans up anything stored in memory to speed up tests.
-        
         // ReactDOM.unmountComponentAtNode(div);
     });
 
     it("shows a comment box", () => {
-
         expect(wrapped.find(CommentBox).length).toBe(1);
         // expect(wrapper.find(CommentBox).length).toBe(2);
     });
 
     it("shows a comment list", () => {
         expect(wrapped.find(CommentList).length).toBe(1);
-    })
+    });
 });
