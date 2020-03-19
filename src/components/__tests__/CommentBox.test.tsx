@@ -25,11 +25,14 @@ describe("comment box", () => {
     });
 
     it("has a text area that users can type into", () => {
+        const newComment = "this is a new comment"
+        
         wrapped.find("textarea").simulate("change", {
-            target: { value: "this is a new comment" }
+            target: { value: newComment }
         });
 
         wrapped.update();
 
+        expect(wrapped.find("textarea").prop("value")).toEqual(newComment);
     });
 });
