@@ -17,7 +17,7 @@ describe("app component", () => {
 
     const div = document.createElement("div");
 
-    afterAll(() => {
+    afterEach(() => {
         // this cleans up anything stored in memory to speed up tests.
         ReactDOM.unmountComponentAtNode(div);
     });
