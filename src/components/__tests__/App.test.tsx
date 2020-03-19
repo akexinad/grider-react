@@ -1,7 +1,25 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { shallow } from "enzyme";
 
 import App from "../App";
+import CommentBox from "../CommentBox";
+
+/**
+ * 
+ * ENZYME
+ * 
+ * We have three rendering options with enzyme
+ * 
+ * STATIC
+ * - Render the given component and return plain HTML
+ * 
+ * SHALLOW
+ * - Render just the given component and none of its children.
+ * 
+ * FULL DOM
+ * - Render the component and all of its children and let us modify it afterwards.
+ * 
+ */
 
 describe("app component", () => {
     const component = <App />;
@@ -23,10 +41,10 @@ describe("app component", () => {
     });
 
     it("shows a comment box", () => {
-        ReactDOM.render(component, div);
 
-        console.log("div.innerHTML", div.innerHTML);
+        const wrapper = shallow(component);
 
-        expect(div.innerHTML).toContain("CommentBox");
+        wrapper.find(CommentBox)
+        
     });
 });
