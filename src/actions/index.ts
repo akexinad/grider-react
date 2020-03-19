@@ -1,5 +1,4 @@
-import { ISaveCommentAction, IComment } from "../interfaces";
-import { SAVE_COMMENT } from "./types";
+import { ISaveCommentAction, IComment, SAVE_COMMENT } from "./types";
 
 export const saveComment = (comment: IComment): ISaveCommentAction => {
     return {

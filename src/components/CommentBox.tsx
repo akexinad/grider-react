@@ -1,6 +1,18 @@
 import React, { FC, useState, ChangeEvent, FormEvent } from "react";
+import { connect, Matching } from "react-redux";
 
-const CommentBox: FC = () => {
+import { ISaveCommentAction, IComment } from "../actions/types";
+
+import * as actions from "../actions";
+
+interface ICommentBoxProps {
+    saveComment: (comment: IComment) => ISaveCommentAction;
+}
+
+const CommentBox: FC<Matching<
+    (comment: IComment) => ISaveCommentAction,
+    ICommentBoxProps
+>> = ({ saveComment }) => {
     const [comment, setComment] = useState("");
 
     const _handleChange = (e: ChangeEvent<HTMLTextAreaElement>) =>
@@ -9,8 +21,10 @@ const CommentBox: FC = () => {
     const _handleSubmit = (e: FormEvent) => {
         e.preventDefault();
 
+        saveComment(comment);
+
         setComment("");
-    }
+    };
 
     return (
         <form onSubmit={_handleSubmit}>
@@ -23,4 +37,4 @@ const CommentBox: FC = () => {
     );
 };
 
-export default CommentBox;
+export default connect(null, actions)(CommentBox);

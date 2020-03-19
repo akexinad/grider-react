@@ -1,4 +1,4 @@
-import { IComment, ICommentActionTypes } from "../interfaces";
+import { IComment, ICommentActionTypes } from "../actions/types";
 
 export default (state: Array<IComment> = [], action: ICommentActionTypes) => {
     switch (action.type) {
