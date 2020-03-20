@@ -1,5 +1,5 @@
 import React from "react";
-import { mount, ReactWrapper } from "enzyme";
+import { mount, ReactWrapper, ShallowWrapper } from "enzyme";
 import moxios from "moxios";
 
 import Root from "../Root";
@@ -38,15 +38,19 @@ describe("integration of fetching and displaying comments", () => {
     });
 
     afterEach(() => {
-
         moxios.uninstall();
-        
+
         wrapped.unmount();
     });
 
-    it("can fetch a list of comments and display them", () => {
+    it("can fetch a list of comments and display them", (done) => {
         wrapped.find(".fetch-comments").simulate("click");
-
-        expect(wrapped.find("li").length).toEqual(4);
+        
+        setTimeout(() => {
+            wrapped.update();
+            expect(wrapped.find("li").length).toEqual(4);
+            // invoke the done method when you have aynchronous requests happening so jest knows to wait for the timeout to end.
+            done();
+        }, 100);
     });
 });
