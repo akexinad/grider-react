@@ -21,3 +21,15 @@ beforeEach(() => {
 it("creates one li element per comment", () => {
     expect(wrapped.find("li").length).toEqual(2);
 });
+
+it("should display those comments in the browser", () => {
+    /**
+     * the .render() method returns a cheerio element
+     * 
+     * Cheerio JS is a Fast, flexible, and lean implementation 
+     * of core jQuery designed specifically for the server.
+     */
+
+    expect(wrapped.render().text()).toContain("foo");
+    expect(wrapped.render().text()).toContain("bar");
+});
