@@ -1,10 +1,18 @@
+import { AxiosResponse } from "axios";
+
 export type IComment = string;
 
+export type SAVE_COMMENT = "SAVE_COMMENT";
+export type FETCH_COMMENTS = "FETCH_COMMENTS"; 
+
 export interface ISaveCommentAction {
-    type: "SAVE_COMMENT";
+    type: SAVE_COMMENT;
     payload: IComment;
 }
 
-export type ICommentActionTypes = ISaveCommentAction;
+export interface IFetchCommentsAction {
+    type: FETCH_COMMENTS;
+    payload: Promise<AxiosResponse<IComment[]>>
+}
 
-export const SAVE_COMMENT: ISaveCommentAction["type"] = "SAVE_COMMENT";
+export type ICommentActionTypes = ISaveCommentAction;
