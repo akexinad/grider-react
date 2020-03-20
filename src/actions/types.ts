@@ -1,5 +1,3 @@
-import { AxiosResponse } from "axios";
-
 export type IComment = string;
 
 export type SAVE_COMMENT = "SAVE_COMMENT";
