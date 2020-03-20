@@ -1,5 +1,5 @@
 import React, { FC, useState, ChangeEvent, FormEvent } from "react";
-import { connect, Matching } from "react-redux";
+import { connect } from "react-redux";
 
 import { ISaveCommentAction, IComment } from "../actions/types";
 
@@ -9,10 +9,7 @@ interface ICommentBoxProps {
     saveComment: (comment: IComment) => ISaveCommentAction;
 }
 
-const CommentBox: FC<Matching<
-    (comment: IComment) => ISaveCommentAction,
-    ICommentBoxProps
->> = ({ saveComment }) => {
+const CommentBox: FC<ICommentBoxProps> = ({saveComment}) => {
     const [comment, setComment] = useState("");
 
     const _handleChange = (e: ChangeEvent<HTMLTextAreaElement>) =>
