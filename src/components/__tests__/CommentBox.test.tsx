@@ -35,7 +35,7 @@ describe("the text area", () => {
 
     it("has a text area and a button", () => {
         expect(wrapped.find("textarea").length).toBe(1);
-        expect(wrapped.find("button").length).toBe(1);
+        expect(wrapped.find("button").length).toBe(2);
     });
 
     it("has a text area that users can type into", () => {

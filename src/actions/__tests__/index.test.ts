@@ -1,4 +1,3 @@
-import { SAVE_COMMENT } from "../types";
 import { saveComment } from "..";
 
 describe("saveComment", () => {
@@ -6,7 +5,7 @@ describe("saveComment", () => {
     const action = saveComment(newComment);
 
     it("has the correct type", () => {
-        expect(action.type).toEqual(SAVE_COMMENT);
+        expect(action.type).toEqual("SAVE_COMMENT");
     });
 
     it("has the correct payload", () => {
