@@ -3,7 +3,7 @@ import { AxiosResponse } from "axios";
 export type IComment = string;
 
 export type SAVE_COMMENT = "SAVE_COMMENT";
-export type FETCH_COMMENTS = "FETCH_COMMENTS"; 
+export type FETCH_COMMENTS = "FETCH_COMMENTS";
 
 export interface ISaveCommentAction {
     type: SAVE_COMMENT;
@@ -12,7 +12,7 @@ export interface ISaveCommentAction {
 
 export interface IFetchCommentsAction {
     type: FETCH_COMMENTS;
-    payload: Promise<AxiosResponse<IComment[]>>
+    payload: any
 }
 
-export type ICommentActionTypes = ISaveCommentAction;
+export type ICommentActionTypes = ISaveCommentAction | IFetchCommentsAction;

@@ -9,12 +9,10 @@ export const saveComment = (comment: IComment): ISaveCommentAction => {
 };
 
 export const fetchComments = (): IFetchCommentsAction => {
-    
     const response = axios.get("http://jsonplaceholder.typicode.com/comments");
 
     return {
         type: "FETCH_COMMENTS",
         payload: response
-    }
-    
-}
+    };
+};
