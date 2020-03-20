@@ -33,7 +33,7 @@ const CommentBox: FC<ICommentBoxProps> = ({ saveComment, fetchComments }) => {
                     <button>Submit Comment</button>
                 </div>
             </form>
-            <button onClick={fetchComments}>Fetch Comments</button>
+            <button onClick={fetchComments} className="fetch-comments">Fetch Comments</button>
         </Fragment>
     );
 };

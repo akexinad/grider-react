@@ -1,19 +1,32 @@
 import React from "react";
-import { mount } from "enzyme";
+import { mount, ReactWrapper } from "enzyme";
 
 import Root from "../Root";
 import App from "../components/App";
 
-afterEach(() => {
+describe("integration of fetching and displaying comments", () => {
+    let wrapped: ReactWrapper;
 
-    
-    
-})
+    beforeEach(() => {
+        // Attempt to render the entire app
+        wrapped = mount(
+            <Root>
+                <App />
+            </Root>
+        );
+    });
 
-it("can fetch a list of comments and display them", () => {
+    afterEach(() => {
+        wrapped.unmount();
+    });
 
-    // Attempt to render the entire app
+    it("can fetch a list of comments and display them", () => {
 
-    
-    
+        wrapped.find(".fetch-comments").simulate("click");
+
+        expect(wrapped.find("li").length).toEqual(500);
+
+    });
 });
+
+
