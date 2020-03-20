@@ -1,5 +1,5 @@
 import React from "react";
-import { mount, ReactWrapper, ShallowWrapper } from "enzyme";
+import { mount, ReactWrapper } from "enzyme";
 import moxios from "moxios";
 
 import Root from "../Root";
