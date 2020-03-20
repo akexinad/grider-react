@@ -7,15 +7,17 @@ import Root from "../../Root";
 let wrapped: ReactWrapper;
 
 beforeEach(() => {
+    const initialState = {
+        comments: ["foo", "bar"]
+    };
+
     wrapped = mount(
-        <Root>
+        <Root initialState={initialState}>
             <CommentList />
         </Root>
     );
 });
 
-it("creates one LI per comment", () => {
-
-    
-    
+it("creates one li element per comment", () => {
+    expect(wrapped.find("li").length).toEqual(2);
 });
