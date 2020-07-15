@@ -1,9 +1,45 @@
-import React from 'react'
+import React, { Component, ChangeEvent, FormEvent } from "react";
 
-export default () => {
-    return (
-        <div>
-            comment box component
-        </div>
-    )
+interface ICommentBoxState {
+    comment: string;
+}
+
+interface ICommentBoxProps {}
+
+export default class CommentBox extends Component<
+    ICommentBoxProps,
+    ICommentBoxState
+> {
+    state = {
+        comment: ""
+    };
+
+    _handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        this.setState({
+            comment: e.target.value
+        });
+    };
+
+    _handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+
+        this.setState({
+            comment: ""
+        });
+    };
+
+    render() {
+        return (
+            <form onSubmit={this._handleSubmit}>
+                <h4>Add a Comment</h4>
+                <textarea
+                    onChange={this._handleChange}
+                    value={this.state.comment}
+                />
+                <div>
+                    <button>Submit Comment</button>
+                </div>
+            </form>
+        );
+    }
 }
