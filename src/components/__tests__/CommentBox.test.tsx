@@ -1,13 +1,14 @@
 import React from "react";
 import CommentBox from "components/CommentBox";
-import { ReactWrapper, mount } from "enzyme";
+import { ReactWrapper, mount, ShallowWrapper, shallow } from "enzyme";
 
 describe("the app component", () => {
     /**
      * we can get away with the shallow renderer here as we do not need
      * access to the components chidren.
      */
-    let wrapped: ReactWrapper;
+    // let wrapped: ReactWrapper;
+    let wrapped: ShallowWrapper;
 
     type testElements = Array<[string, number]>;
     const TEXT_AREA = "textarea";
@@ -18,7 +19,8 @@ describe("the app component", () => {
     ];
 
     beforeEach(() => {
-        wrapped = mount(<CommentBox />);
+        // wrapped = mount(<CommentBox />);
+        wrapped = shallow(<CommentBox />);
     });
 
     afterEach(() => {
@@ -36,6 +38,7 @@ describe("the app component", () => {
                 value: "my name is bla bla"
             }
         };
+        const valueProp = "value";
 
         // SIMULATE A CHANGE EVENT WITH A MOCK OBJECT.
         wrapped.find(TEXT_AREA).simulate(changeEvent, mockEventObject);
@@ -44,6 +47,17 @@ describe("the app component", () => {
         wrapped.update();
 
         // now we can check the "value" prop belonging to the textarea to see if it equals the value of the mock object above.
-        expect(wrapped.find(TEXT_AREA).prop("value")).toEqual(mockEventObject.target.value);
+        expect(wrapped.find(TEXT_AREA).prop(valueProp)).toEqual(mockEventObject.target.value);
     });
+
+    it("should empty out the text area when the form is submitted", () => {
+        const submitEvent = "submit";
+        const valueProp = "value";
+
+        wrapped.find(TEXT_AREA).simulate(submitEvent);
+
+        wrapped.update();
+
+        expect(wrapped.find(TEXT_AREA).prop(valueProp)).toEqual("");
+    })
 });
