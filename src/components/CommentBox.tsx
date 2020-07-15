@@ -4,10 +4,8 @@ interface ICommentBoxState {
     comment: string;
 }
 
-interface ICommentBoxProps {}
-
 export default class CommentBox extends Component<
-    ICommentBoxProps,
+    {},
     ICommentBoxState
 > {
     state = {
