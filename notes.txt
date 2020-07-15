@@ -30,3 +30,8 @@ having to write a heap of boiler plate code.
 From the github page:
 - Enzyme is a JavaScript Testing utility for React that makes it easier to test your
 React Components' output. You can also manipulate, traverse, and in some ways simulate runtime given the output.
+
+- There are three types of renderers in enzyme:
+    1. Static: Render the given component and return plain HTML.
+    2. Shallow: Render JUST the given component and none of its children.
+    3. Full DOM: Render the component and all of its children + let us modify it afterwards.
