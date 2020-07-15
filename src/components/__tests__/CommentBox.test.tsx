@@ -1,6 +1,5 @@
 import React from "react";
 import CommentBox from "components/CommentBox";
-import CommentList from "components/CommentList";
 import { ReactWrapper, mount } from "enzyme";
 
 describe("the app component", () => {
@@ -9,7 +8,9 @@ describe("the app component", () => {
      * access to the components chidren.
      */
     let wrapped: ReactWrapper;
-    const elements = [
+
+    type testElements = Array<[string, number]>;
+    const elements: testElements = [
         ["textarea", 1],
         ["button", 1]
     ];
@@ -23,10 +24,6 @@ describe("the app component", () => {
     });
 
     test.each(elements)("has 1 of each of these elements", (element, qty) => {
-        expect(wrapped.find(element.toString()).length).toEqual(+qty);
+        expect(wrapped.find(element).length).toEqual(qty);
     });
-
-    // it("shows a comment list", () => {
-    //     expect(wrapped.find(CommentList).length).toEqual(1);
-    // });
 });
